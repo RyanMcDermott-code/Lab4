@@ -16,11 +16,10 @@ public abstract class Zombie {
     protected int baseHP;
     protected int speed;
     private String attackSuccess;
-    private int attackDamage;
     public static final Random RANDOM = new Random();
 
 
-    protected static int roll(int sides, int dice) {
+    public static int roll(int sides, int dice) {
         /*
     Roll method simulates multiple type of dice rolls.
     Sides is the number of sides to the dice.
@@ -55,12 +54,13 @@ public abstract class Zombie {
 
 
 
-    protected int getArms() {
-        return arms;
-    }
 
 
     //region Getters/Setters
+    public int getArms() {
+        return arms;
+    }
+
     protected void setArms(int arms) {
         if(arms < 0 || arms > 2) {
             throw new IllegalArgumentException("Arms must be between 0 and 2!");
@@ -68,7 +68,7 @@ public abstract class Zombie {
         this.arms = arms;
     }
 
-    protected int getLegs() {
+    public int getLegs() {
         return legs;
     }
 
@@ -79,7 +79,7 @@ public abstract class Zombie {
         this.legs = legs;
     }
 
-    protected int getBaseHP() {
+    public int getBaseHP() {
         return baseHP;
     }
 
@@ -87,7 +87,7 @@ public abstract class Zombie {
         this.baseHP = baseHP;
     }
 
-    protected int getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
@@ -96,8 +96,7 @@ public abstract class Zombie {
     }
 
 
-
-    protected String getAttackSuccess() {
+    public String getAttackSuccess() {
         return attackSuccess;
     }
 
@@ -105,18 +104,11 @@ public abstract class Zombie {
         this.attackSuccess = attackSuccess;
     }
 
-    protected int getAttackDamage() {
-        return attackDamage;
-    }
-    //endregion
-    protected void setAttackDamage(int attackDamage) {
-        this.attackDamage = attackDamage;
-    }
 
     @Override
     public String toString() {
         return this.getClass().getSimpleName() +
-                "{ [Statistics: BaseHP=" + getBaseHP() +
+                " {Statistics: BaseHP=" + getBaseHP() +
                 ", Arms=" + getArms() +
                 ", Legs=" + getLegs() +
                 ", Speed=" + getSpeed();

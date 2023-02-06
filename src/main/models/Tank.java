@@ -17,7 +17,6 @@ public class Tank extends Zombie{
         setBaseHP(generateStat(45, 70));
         setSpeed(generateStat(4, 8));
         setDamageModifier(generateStat(10, 20));
-        setAttackDamage(attack(roll(20,1)));
     }
     public Tank(int arms, int legs, int baseHP, int speed, int damageModifier) {
         setArms(arms);
@@ -25,7 +24,6 @@ public class Tank extends Zombie{
         setBaseHP(baseHP);
         setSpeed(speed);
         setDamageModifier(damageModifier);
-        setAttackDamage(attack(roll(20,1)));
     }
 
     @Override
@@ -86,9 +84,7 @@ public class Tank extends Zombie{
     public String toString() {
         return super.toString() +
                 ", DamageModifier=" + getDamageModifier() +
-                "] Attack[ " + getAttackSuccess() +
-                " Damage Dealt: " + getAttackDamage() +
-                " ]}"
+                "}"
                 ;
     }
 }

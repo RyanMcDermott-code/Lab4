@@ -14,14 +14,12 @@ public class Walker extends Zombie{
         setLegs(generateStat(0,2));
         setBaseHP(generateStat(15, 30));
         setSpeed(generateStat(6, 10));
-        setAttackDamage(attack(roll(20,1)));
     }
     public Walker(int arms, int legs, int baseHP, int speed) {
         setArms(arms);
         setLegs(legs);
         setBaseHP(baseHP);
         setSpeed(speed);
-        setAttackDamage(attack(roll(20,1)));
     }
 
 
@@ -73,9 +71,7 @@ public class Walker extends Zombie{
     @Override
     public String toString() {
         return super.toString() +
-                "] Attack[ " + getAttackSuccess() +
-                " Damage Dealt: " + getAttackDamage() +
-                " ]}"
+                "}"
                 ;
     }
 }

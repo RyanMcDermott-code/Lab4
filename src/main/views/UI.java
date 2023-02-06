@@ -47,8 +47,10 @@ public class UI {
 
     public void displayZeds(ArrayList<Zombie> horde) {
         for (Zombie zombie : horde) {
-            Console.writeLn(zombie.toString());
+            Console.write(zombie.toString(), Console.TextColor.GREEN);
+            attackZombie(zombie);
         }
+        addHorizontalLine();
     }
 
     public static void displayGoodbyeMessage(){
@@ -57,5 +59,9 @@ public class UI {
     private static void addHorizontalLine(){
         Console.writeLn("----------------------------------------------------", Console.TextColor.BLACK);
     }
-
+    private static void attackZombie(Zombie zed) {
+        int attackDamage = zed.attack(zed.roll(20, 1));
+        Console.write(" Attack[ " + zed.getAttackSuccess() + " " + attackDamage + " damage]", Console.TextColor.RED);
+        Console.writeLn("");
+    }
 }

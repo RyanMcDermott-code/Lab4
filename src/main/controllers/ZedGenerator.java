@@ -65,8 +65,6 @@ public class ZedGenerator {
         }
     }
 
-    public List<Zombie> getHorde() {
-        return horde;
-    }
+
 
 }

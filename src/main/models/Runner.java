@@ -7,24 +7,20 @@
 package main.models;
 
 public class Runner extends Zombie{
-    private int climbSpeed;
-    //climbSpeed 1/3 run speed
 
     public Runner() {
         setArms(generateStat(0,2));
         setLegs(generateStat(0,2));
         setBaseHP(generateStat(10, 22));
         setSpeed(generateStat(15, 25));
-        setClimbSpeed(getSpeed());
-        setAttackDamage(attack(roll(20,1)));
+        calculateClimbSpeed(speed);
     }
     public Runner(int arms, int legs, int baseHP, int speed) {
         setArms(arms);
         setLegs(legs);
         setBaseHP(baseHP);
         setSpeed(speed);
-        setClimbSpeed(speed);
-        setAttackDamage(attack(roll(20,1)));
+        calculateClimbSpeed(speed);
     }
     @Override
     public int attack(int roll) {
@@ -69,29 +65,18 @@ public class Runner extends Zombie{
         this.speed = speed;
     }
 
-    public int getClimbSpeed() {
-        return climbSpeed;
-    }
     private int calculateClimbSpeed(double speed) {
+        //climbspeed is 1/3 speed
         speed  = speed * 0.3333333;
         int climbSpeed = (int)Math.round(speed);
         return climbSpeed;
-    }
-    private void setClimbSpeed(int speed) {
-        if(speed < 15 || speed > 25) {
-            throw new IllegalArgumentException("Speed must be between 15 and 25 for " + this.getClass().getName());
-        }
-        //climbSpeed is 1/3 the base speed
-        this.climbSpeed = calculateClimbSpeed(speed);
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                ", ClimbSpeed=" + getClimbSpeed() +
-                "] Attack[ " + getAttackSuccess() +
-                " Damage Dealt: " + getAttackDamage() +
-                " ]}"
+                ", ClimbSpeed=" + calculateClimbSpeed(speed) +
+                "}"
                 ;
     }
 }
