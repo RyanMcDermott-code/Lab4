@@ -27,17 +27,17 @@ public class ZedGenerator {
 
                 case 1://generate 1 zed
                     generateZed(1);
-                    ui.displayZeds((ArrayList<Zombie>) horde);
+                    showZombie();
                     horde.clear();
                     break;
                 case 2://generate 1 to 10 zeds
                     generateZed(RANDOM.nextInt(9) + 1);
-                    ui.displayZeds((ArrayList<Zombie>) horde);
+                    showZombie();
                     horde.clear();
                     break;
                 case 3: //generate n zeds
                     generateZed(ui.howManyZeds());
-                    ui.displayZeds((ArrayList<Zombie>) horde);
+                    showZombie();
                     horde.clear();
                     break;
                 case 4: //exit
@@ -64,7 +64,13 @@ public class ZedGenerator {
                 return new Walker();
         }
     }
-
+    private void showZombie() {
+        for (Zombie zed : horde) {
+            ui.displayZeds(zed);
+            int attackDamage = zed.attack(zed.roll(20, 1));
+            ui.attackZombie(attackDamage, zed.getAttackSuccess());
+        }
+    }
 
 
 }
